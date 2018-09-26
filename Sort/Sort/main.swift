@@ -10,10 +10,12 @@ import Foundation
 
 print("Hello, World!")
 
-var arr = [ 39, 453, 42, 6, 24, 5, 0, 35]
+var arr = [ -1, 39, 453, 42, 6, 24, 5, 0, 35, 4562]
 
-print(arr.selectionSort())
+//print(arr.selectionSort())
+print(arr.bubbleSort())
 
-var students: [Student] = [ Student.init(name: "R", score: 96), Student.init(name: "G", score: 86), Student.init(name: "D", score: 88), Student.init(name: "S", score: 96), Student.init(name: "V", score: 80) ]
+var students: [Student] = [ Student.init(name: "R", score: 96), Student.init(name: "G", score: 86), Student.init(name: "D", score: 88), Student.init(name: "S", score: 96), Student.init(name: "V", score: 80), Student.init(name: "A", score: 96) ]
 
-print(students.selectionSort())
+//print(students.selectionSort())
+print(students.bubbleSort())
