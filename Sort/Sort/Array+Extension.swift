@@ -10,7 +10,7 @@ import Foundation
 
 extension Array where Element: Comparable {
     
-    // 选择排序
+    //MARK: - 选择排序
     mutating func selectionSort() -> [Element] {
         for i in 0...self.count-2 {
             var min = i
