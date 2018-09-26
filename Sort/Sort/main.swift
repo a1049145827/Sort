@@ -10,7 +10,9 @@ import Foundation
 
 print("Hello, World!")
 
-var arr = [ -1, 39, 453, 42, 6, 24, 5, 0, 35, 4562]
+//var arr = [ -1, 39, 453, 42, 6, 24, 5, 0, 35, 4562]
+var arr = SortHelper.generateRandomArray(count: 32, maxValue: 100)
+print(arr)
 
 //print(arr.selectionSort())
 print(arr.bubbleSort())
