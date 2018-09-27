@@ -15,9 +15,11 @@ var arr = SortHelper.generateRandomArray(count: 32, maxValue: 100)
 print(arr)
 
 //print(arr.selectionSort())
-print(arr.bubbleSort())
+//print(arr.bubbleSort())
+print(arr.insertionSort())
 
 var students: [Student] = [ Student.init(name: "R", score: 96), Student.init(name: "G", score: 86), Student.init(name: "D", score: 88), Student.init(name: "S", score: 96), Student.init(name: "V", score: 80), Student.init(name: "A", score: 96) ]
 
 //print(students.selectionSort())
-print(students.bubbleSort())
+//print(students.bubbleSort())
+print(students.insertionSort())
