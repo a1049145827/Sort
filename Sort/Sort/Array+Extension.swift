@@ -72,4 +72,44 @@ extension Array where Element: Comparable {
         
         return self;
     }
+    
+    // MARK: - 归并排序，复杂度 O(n^logn)
+    mutating func mergeSort() -> [Element] {
+        return self
+    }
+    
+    // MARK: - 快速排序
+    mutating func quickSort() -> [Element] {
+        
+        __quickSort(l: 0, r: self.count - 1)
+        
+        return self
+    }
+    
+    private mutating func __quickSort(l: Int, r: Int) -> Void {
+        
+        if l >= r {
+            return;
+        }
+        
+        let q = __quick(l: l, r: r)
+        
+        __quickSort(l: l, r: q - 1)
+        __quickSort(l: q + 1, r: r)
+    }
+    
+    private mutating func __quick(l: Int, r: Int) -> Int {
+        
+        let e = self[l]
+        var j = l
+        for i in l...r {
+            if (self[i] < e) {
+                self.swapAt(i, j + 1)
+                j += 1
+            }
+        }
+        self.swapAt(l, j)
+        
+        return j
+    }
 }
