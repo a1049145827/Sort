@@ -75,7 +75,59 @@ extension Array where Element: Comparable {
     
     // MARK: - 归并排序，复杂度 O(n^logn)
     mutating func mergeSort() -> [Element] {
+        
+        __mergeSort(l: 0, r: self.count - 1)
+        
         return self
+    }
+    
+    private mutating func __mergeSort(l: Int, r: Int) -> Void {
+        
+        if l >= r {
+            return
+        }
+        
+        let q = (l + r) / 2
+        
+        __mergeSort(l: l, r: q)
+        __mergeSort(l: q+1, r: r)
+        
+        if self[q] > self[q+1] {
+
+            __merge(l: l, r: r, q: q)
+        }
+    }
+    
+    private mutating func __merge(l: Int, r: Int, q: Int) -> Void {
+        
+        // 临时c数组元素个数
+        let c = r - l + 1
+        var arr = [Element](repeating: self[0], count: c)
+        for i in l...r {
+            arr[i-l] = self[i]
+        }
+        
+        var i = l
+        var j = q+1
+        
+        for k in l...r {
+            let tmpI = i - l
+            let tmpJ = j - l
+            
+            if i > q {
+                self[k] = arr[tmpJ];
+                j += 1
+            } else if j > r {
+                self[k] = arr[tmpI]
+                i += 1
+            } else if arr[tmpI] < arr[tmpJ] {
+                self[k] = arr[tmpI]
+                i += 1
+            } else {
+                self[k] = arr[tmpJ]
+                j += 1
+            }
+        }
     }
     
     // MARK: - 快速排序
