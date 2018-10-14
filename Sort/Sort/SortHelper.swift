@@ -40,19 +40,5 @@ struct SortHelper {
 //        print("\(sortName) 排序完毕，耗时：\(startTime - endTime)")
 //    }
     
-    /// 检测数组是否已从小到大排序
-    ///
-    /// - Parameter arr: 要检测的数组
-    /// - Returns: 是否已排序
-    static func checkSort(arr: [UInt32]) -> Bool {
-        
-        for i in 0...arr.count-2 {
-            if arr[i+1] < arr[i] {
-                return false
-            }
-        }
-        return true
-    }
-    
     
 }

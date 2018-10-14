@@ -10,6 +10,16 @@ import Foundation
 
 extension Array where Element: Comparable {
     
+    // MARK: - 是否已经排序
+    public var isSorted: Bool {
+        for i in 0..<self.count-2 {
+            if self[i] > self[i+1] {
+                return false
+            }
+        }
+        return true
+    }
+    
     // MARK: - 选择排序
     // 复杂度 O(n^2), swap函数时间复杂度 O(n)
     mutating func selectionSort() -> [Element] {
@@ -163,5 +173,54 @@ extension Array where Element: Comparable {
         self.swapAt(l, j)
         
         return j
+    }
+    
+    // MARK: - 快速排序，双路快排
+    mutating func quickSort2() -> [Element] {
+        
+        __quickSort2(l: 0, r: self.count - 1)
+        
+        return self
+    }
+    
+    private mutating func __quickSort2(l: Int, r: Int) -> Void {
+        
+        if l >= r {
+            return
+        }
+        
+        let q = __quick2(l: l, r: r)
+        
+        __quickSort2(l: l, r: q - 1)
+        __quickSort2(l: q + 1, r: r)
+    }
+    
+    private mutating func __quick2(l: Int, r: Int) -> Int {
+        
+        let e = self[l]
+        var j = l+1
+        var k = r
+        
+        while true {
+            
+            while j <= r && self[j] <= e {
+                j += 1
+            }
+            while k > l && self[k] > e {
+                k -= 1
+            }
+            if j >= k {
+                break
+            }
+            
+            swapAt(j, k)
+            
+            j += 1
+            k -= 1
+        }
+        
+        swapAt(l, k)
+        
+        return k
     }
 }
