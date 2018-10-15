@@ -27,18 +27,14 @@ struct SortHelper {
         return arr
     }
     
-//    static func testSort(sortName: String, sort: ([UInt32]) -> [UInt32]) -> Void {
-//        
-//        let startTime = Date().timeIntervalSince1970
-//        
-//        let sortedArr = sort(arr)
-//        
-//        let endTime = Date().timeIntervalSince1970
-//        
-//        assert(self.checkSort(arr: sortedArr))
-//        
-//        print("\(sortName) 排序完毕，耗时：\(startTime - endTime)")
-//    }
-    
-    
+    static func testSort(sortName: String, sort: () -> Void) -> Void {
+        
+        let startTime = Date().timeIntervalSince1970
+        
+        sort()
+        
+        let endTime = Date().timeIntervalSince1970
+        
+        print("\(sortName) 排序完毕，耗时：\(endTime - startTime)")
+    }
 }

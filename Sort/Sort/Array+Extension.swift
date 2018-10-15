@@ -22,7 +22,7 @@ extension Array where Element: Comparable {
     
     // MARK: - 选择排序
     // 复杂度 O(n^2), swap函数时间复杂度 O(n)
-    mutating func selectionSort() -> [Element] {
+    @discardableResult mutating func selectionSort() -> [Element] {
         if self.count < 2 {
             return self
         }
@@ -42,7 +42,7 @@ extension Array where Element: Comparable {
     
     // MARK: - 冒泡排序
     // 复杂度 O(n^2), swap函数时间复杂度 O(n^2)
-    mutating func bubbleSort() -> [Element] {
+    @discardableResult mutating func bubbleSort() -> [Element] {
         if self.count < 2 {
             return self
         }
@@ -59,7 +59,7 @@ extension Array where Element: Comparable {
     
     // MARK: - 插入排序
     // 复杂度 低于O(n^2), swap函数时间复杂度 大于O(n)
-    mutating func insertionSort() -> [Element] {
+    @discardableResult mutating func insertionSort() -> [Element] {
         if self.count < 2 {
             return self
         }
@@ -84,7 +84,7 @@ extension Array where Element: Comparable {
     }
     
     // MARK: - 归并排序，复杂度 O(n^logn)
-    mutating func mergeSort() -> [Element] {
+    @discardableResult mutating func mergeSort() -> [Element] {
         
         __mergeSort(l: 0, r: self.count - 1)
         
@@ -141,7 +141,7 @@ extension Array where Element: Comparable {
     }
     
     // MARK: - 快速排序
-    mutating func quickSort() -> [Element] {
+    @discardableResult mutating func quickSort() -> [Element] {
         
         __quickSort(l: 0, r: self.count - 1)
         
@@ -176,7 +176,7 @@ extension Array where Element: Comparable {
     }
     
     // MARK: - 快速排序，双路快排
-    mutating func quickSort2() -> [Element] {
+    @discardableResult mutating func quickSort2Way() -> [Element] {
         
         __quickSort2(l: 0, r: self.count - 1)
         
@@ -222,5 +222,60 @@ extension Array where Element: Comparable {
         swapAt(l, k)
         
         return k
+    }
+    
+    // MARK: - 快速排序，三路快排
+    @discardableResult mutating func quickSort3Way() -> [Element] {
+        
+        __quickSort3(l: 0, r: self.count - 1)
+        
+        return self
+    }
+    
+    private mutating func __quickSort3(l: Int, r: Int) -> Void {
+        
+        if l >= r {
+            return
+        }
+        
+        let (lt, gt) = __quick3(l: l, r: r)
+        
+        __quickSort3(l: l, r: lt - 1)
+        __quickSort3(l: gt + 1, r: r)
+    }
+    
+    private mutating func __quick3(l: Int, r: Int) -> (Int, Int) {
+        
+        let e = self[l]
+        var lt = l
+        var i = l + 1
+        var gt = r
+        
+        while i <= gt {
+            while gt > l && self[gt] > e {
+                gt -= 1
+            }
+            if i > gt {
+                break
+            }
+            if self[i] < e {
+                
+                swapAt(i, lt + 1)
+                lt += 1
+                i += 1
+            } else if self[i] > e {
+                if i != gt {
+                    swapAt(i, gt)
+                }
+                gt -= 1
+            } else {
+                i += 1
+            }
+        }
+        if l != lt {
+            swapAt(l, lt)
+        }
+        
+        return (lt, gt)
     }
 }
