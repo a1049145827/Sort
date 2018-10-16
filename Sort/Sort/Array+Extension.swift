@@ -48,7 +48,7 @@ extension Array where Element: Comparable {
     }
     
     // MARK: - 插入排序
-    // 复杂度 低于O(n^2), swap函数时间复杂度 大于O(n)
+    // 复杂度 O(n^2), swap函数时间复杂度 大于O(n)
     mutating func insertionSort() -> [Element] {
         if self.count < 2 {
             return self
