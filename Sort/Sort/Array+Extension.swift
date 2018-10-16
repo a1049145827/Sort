@@ -166,11 +166,11 @@ extension Array where Element: Comparable {
         var j = l
         for i in l...r {
             if (self[i] < e) {
-                self.swapAt(i, j + 1)
+                swapAt(i, j + 1)
                 j += 1
             }
         }
-        self.swapAt(l, j)
+        swapAt(l, j)
         
         return j
     }
