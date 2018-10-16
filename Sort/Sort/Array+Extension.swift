@@ -178,24 +178,24 @@ extension Array where Element: Comparable {
     // MARK: - 快速排序，双路快排
     @discardableResult mutating func quickSort2Way() -> [Element] {
         
-        __quickSort2(l: 0, r: self.count - 1)
+        __quickSort2Way(l: 0, r: self.count - 1)
         
         return self
     }
     
-    private mutating func __quickSort2(l: Int, r: Int) -> Void {
+    private mutating func __quickSort2Way(l: Int, r: Int) -> Void {
         
         if l >= r {
             return
         }
         
-        let q = __quick2(l: l, r: r)
+        let q = __quick2Way(l: l, r: r)
         
-        __quickSort2(l: l, r: q - 1)
-        __quickSort2(l: q + 1, r: r)
+        __quickSort2Way(l: l, r: q - 1)
+        __quickSort2Way(l: q + 1, r: r)
     }
     
-    private mutating func __quick2(l: Int, r: Int) -> Int {
+    private mutating func __quick2Way(l: Int, r: Int) -> Int {
         
         let e = self[l]
         var j = l+1
@@ -227,24 +227,24 @@ extension Array where Element: Comparable {
     // MARK: - 快速排序，三路快排
     @discardableResult mutating func quickSort3Way() -> [Element] {
         
-        __quickSort3(l: 0, r: self.count - 1)
+        __quickSort3Way(l: 0, r: self.count - 1)
         
         return self
     }
     
-    private mutating func __quickSort3(l: Int, r: Int) -> Void {
+    private mutating func __quickSort3Way(l: Int, r: Int) -> Void {
         
         if l >= r {
             return
         }
         
-        let (lt, gt) = __quick3(l: l, r: r)
+        let (lt, gt) = __quick3Way(l: l, r: r)
         
-        __quickSort3(l: l, r: lt - 1)
-        __quickSort3(l: gt + 1, r: r)
+        __quickSort3Way(l: l, r: lt - 1)
+        __quickSort3Way(l: gt + 1, r: r)
     }
     
-    private mutating func __quick3(l: Int, r: Int) -> (Int, Int) {
+    private mutating func __quick3Way(l: Int, r: Int) -> (Int, Int) {
         
         let e = self[l]
         var lt = l
@@ -259,22 +259,17 @@ extension Array where Element: Comparable {
                 break
             }
             if self[i] < e {
-                
                 swapAt(i, lt + 1)
                 lt += 1
                 i += 1
             } else if self[i] > e {
-                if i != gt {
-                    swapAt(i, gt)
-                }
+                swapAt(i, gt)
                 gt -= 1
             } else {
                 i += 1
             }
         }
-        if l != lt {
-            swapAt(l, lt)
-        }
+        swapAt(l, lt)
         
         return (lt, gt)
     }

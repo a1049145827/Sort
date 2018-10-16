@@ -8,14 +8,22 @@
 
 import Foundation
 
+
 print("Hello, World!")
 
-//var arr = [ -1, 39, 453, 42, 6, 24, 5, 0, 35, 4562]
-//var arr = [5, 4, 3, 3]
+//var arr = [ -1, 39, 453, 42, 6, 24, 5, 0, 35, 4562 ]
+//let arr = [5, 4, 3, 3]
 
-var arr = SortHelper.generateRandomArray(count: 10000, maxValue: 5)
+// Swift 中 Struct 具有“写时复制”的特性
+let arr = SortHelper.generateRandomArray(count: 100000, maxValue: 10000)
+
+var arr1 = arr
 var arr2 = arr
 var arr3 = arr
+var arr4 = arr
+
+//arr2.append(15)
+
 //print(arr)
 
 //print(arr.selectionSort())
@@ -26,8 +34,8 @@ var arr3 = arr
 
 
 SortHelper.testSort(sortName: "快速排序") {
-    arr.quickSort()
-    assert(arr.isSorted)
+    arr1.quickSort()
+    assert(arr1.isSorted)
 }
 
 SortHelper.testSort(sortName: "双路快排") {
@@ -38,6 +46,11 @@ SortHelper.testSort(sortName: "双路快排") {
 SortHelper.testSort(sortName: "三路快排") {
     arr3.quickSort3Way()
     assert(arr3.isSorted)
+}
+
+SortHelper.testSort(sortName: "Swift 自带排序") {
+    arr4.sort()
+    assert(arr4.isSorted)
 }
 
 

@@ -16,9 +16,9 @@ struct SortHelper {
     ///   - count: 要生成的数组的元素个数
     ///   - maxValue: 生成的元素最大随机值，最小默认为0
     /// - Returns: 生成的随机数数组
-    static func generateRandomArray(count: UInt32, maxValue: UInt32) -> [UInt32] {
+    static func generateRandomArray(count: UInt32, maxValue: UInt32) -> Array<UInt32> {
         
-        var arr = [UInt32]()
+        var arr = Array<UInt32>()
         for _ in 1...count {
             let num = arc4random_uniform(maxValue)
             arr.append(num)
