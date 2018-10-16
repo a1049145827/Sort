@@ -27,32 +27,14 @@ struct SortHelper {
         return arr
     }
     
-//    static func testSort(sortName: String, sort: ([UInt32]) -> [UInt32]) -> Void {
-//        
-//        let startTime = Date().timeIntervalSince1970
-//        
-//        let sortedArr = sort(arr)
-//        
-//        let endTime = Date().timeIntervalSince1970
-//        
-//        assert(self.checkSort(arr: sortedArr))
-//        
-//        print("\(sortName) 排序完毕，耗时：\(startTime - endTime)")
-//    }
-    
-    /// 检测数组是否已从小到大排序
-    ///
-    /// - Parameter arr: 要检测的数组
-    /// - Returns: 是否已排序
-    static func checkSort(arr: [UInt32]) -> Bool {
+    static func testSort(sortName: String, sort: () -> Void) -> Void {
         
-        for i in 0...arr.count-2 {
-            if arr[i+1] < arr[i] {
-                return false
-            }
-        }
-        return true
+        let startTime = Date().timeIntervalSince1970
+        
+        sort()
+        
+        let endTime = Date().timeIntervalSince1970
+        
+        print("\(sortName) 排序完毕，耗时：\(endTime - startTime)")
     }
-    
-    
 }
