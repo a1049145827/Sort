@@ -110,7 +110,7 @@ extension Array where Element: Comparable {
     
     private mutating func __merge(l: Int, r: Int, q: Int) -> Void {
         
-        // 临时c数组元素个数
+        // 临时数组元素个数
         let c = r - l + 1
         var arr = [Element](repeating: self[0], count: c)
         for i in l...r {

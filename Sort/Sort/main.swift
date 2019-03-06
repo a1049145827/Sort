@@ -15,7 +15,7 @@ print("Hello, World!")
 //let arr = [5, 4, 3, 3]
 
 // Swift 中 Struct 具有“写时复制”的特性
-let arr = SortHelper.generateRandomArray(count: 100000, maxValue: 10)
+let arr = SortHelper.generateRandomArray(count: 1000000, maxValue: 10000)
 
 var arr0 = arr
 var arr1 = arr
