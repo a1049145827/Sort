@@ -273,4 +273,34 @@ extension Array where Element: Comparable {
         
         return (lt, gt)
     }
+    
+    // MARK: -  合并两个有序数组
+    static func mergeTwoArray(arr1: [Element], arr2: [Element]) -> [Element] {
+        let totalCount = arr1.count + arr2.count
+        var result = [Element]()
+        var index1: Int = 0
+        var index2: Int = 0
+        
+        for _ in 0..<totalCount {
+            if (index1 >= arr1.count) {
+                result.append(arr2[index2])
+                index2 += 1
+            } else if (index2 >= arr2.count) {
+                result.append(arr1[index1])
+                index1 += 1
+            } else {
+                let obj2 = arr2[index2]
+                let obj1 = arr1[index1]
+                if obj2 < obj1 {
+                    result.append(obj2)
+                    index2 += 1
+                } else {
+                    result.append(obj1)
+                    index1 += 1
+                }
+            }
+        }
+        
+        return result
+    }
 }

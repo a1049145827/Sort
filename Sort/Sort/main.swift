@@ -66,3 +66,14 @@ var students: [Student] = [ Student.init(name: "R", score: 96), Student.init(nam
 //print(students.bubbleSort())
 //print(students.insertionSort())
 print(students.quickSort())
+
+var array1 = SortHelper.generateRandomArray(count: 10000, maxValue: 1000)
+var array2 = SortHelper.generateRandomArray(count: 20000, maxValue: 3000)
+
+array1.quickSort()
+array2.quickSort()
+
+let array3 = Array.mergeTwoArray(arr1: array1, arr2: array2)
+
+assert(array3.isSorted)
+print(array3.count)
